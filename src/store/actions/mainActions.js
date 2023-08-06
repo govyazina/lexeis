@@ -5,6 +5,11 @@ export const writeWordsAC = (data) => ({
     payload: data,
 });
 
+export const shuffleWordsAC = () => ({
+    type: mainTypes.SHUFFLE_WORDS,
+    payload: null,
+})
+
 export const fetchWords = () => {
     return (dispatch) => {
         const host = process.env.NODE_ENV === 'development' ? 'http://localhost:3002' : '';
