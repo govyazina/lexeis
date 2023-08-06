@@ -15,7 +15,6 @@ export function WordCard({front, back}) {
         <Box sx={{
             minWidth: 275,
             width: 300,
-            // height: 100,
             marginX: 'auto',
             marginY: 2
         }}
