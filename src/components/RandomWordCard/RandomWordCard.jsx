@@ -18,7 +18,6 @@ function RandomWordCard() {
     )
   }
 
-  console.log(shuffledWords)
   return (
     <Container maxWidth="sm">
       <WordCard key={index} front={shuffledWords[index].en} back={shuffledWords[index].el}/>
@@ -28,7 +27,7 @@ function RandomWordCard() {
       }}>
 
       <Button variant="contained"
-              onClick={() => setIndex(index + 1)}>Next</Button>
+              onClick={() => setIndex((i) => i >= shuffledWords.length - 1 ? 0 : i + 1)}>Next</Button>
     </Box>
     </Container>
 

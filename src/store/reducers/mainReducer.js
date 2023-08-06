@@ -19,7 +19,6 @@ function mainReducer(state = initialState, action = {}) {
             return {...state, shuffledWords: copyWords}
         }
         default: {
-            console.log('unknown action type', action)
             return state;
         }
     }}
