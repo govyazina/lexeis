@@ -15,12 +15,17 @@ export function WordCard({front, back}) {
         <Box sx={{
             minWidth: 275,
             width: 300,
-            height: 100,
-            marginX: 'auto'
+            // height: 100,
+            marginX: 'auto',
+            marginY: 2
         }}
              onClick={() => setFlipped(true)}>
                 <Card variant="outlined">
-                    <CardContent>
+                    <CardContent
+                    sx={{
+                        height: 50,
+                        paddingY: 5
+                    }}>
                         <Typography variant="h5" component="div" textAlign={"center"}>
                             {flipped ? back : front}
                         </Typography>
