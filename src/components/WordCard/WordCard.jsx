@@ -6,20 +6,26 @@ import Typography from '@mui/material/Typography';
 import {useState} from "react";
 
 export function WordCard({front, back}) {
-	const [flipped, setFlipped] = useState(false)
-if (flipped) {
-	setTimeout(() => setFlipped(false), 2000)
-}
-	return (
-		<Box sx={{ minWidth: 275 }}
-		onClick={() => setFlipped(true)}>
-			<Card variant="outlined">
-				<CardContent>
-					<Typography variant="h5" component="div" textAlign={"center"}>
-						{flipped ? back : front}
-					</Typography>
-				</CardContent>
-			</Card>
-		</Box>
-	);
+    const [flipped, setFlipped] = useState(false)
+    if (flipped) {
+        setTimeout(() => setFlipped(false), 2000)
+    }
+    return (
+
+        <Box sx={{
+            minWidth: 275,
+            width: 300,
+            height: 100,
+            marginX: 'auto'
+        }}
+             onClick={() => setFlipped(true)}>
+                <Card variant="outlined">
+                    <CardContent>
+                        <Typography variant="h5" component="div" textAlign={"center"}>
+                            {flipped ? back : front}
+                        </Typography>
+                    </CardContent>
+                </Card>
+        </Box>
+    );
 }
