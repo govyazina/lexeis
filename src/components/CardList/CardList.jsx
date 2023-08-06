@@ -1,8 +1,9 @@
-import {words} from "../../data/λεχεις";
 import {WordCard} from "../WordCard/WordCard";
 import {Container} from "@mui/material";
+import {useSelector} from "react-redux";
 
 export const CardList = () => {
+	const {words} = useSelector(store => store.mainStore);
 	return (
 		<>
 			<Container maxWidth="sm">

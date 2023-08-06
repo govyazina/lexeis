@@ -1,5 +1,5 @@
 const mainTypes = {
-    DO_SOMETHING: 'DO_SOMETHING',
+    WRITE_WORDS: 'WRITE_WORDS',
 };
 
 export default mainTypes;
