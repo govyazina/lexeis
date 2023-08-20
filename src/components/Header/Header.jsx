@@ -7,8 +7,11 @@ import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import {NavLink} from "react-router-dom";
+import {BasicModal} from "../BasicModal/BasicModal";
+import {useSelector} from "react-redux";
 
 export default function Header() {
+  const {token, name} = useSelector(store => store.mainStore.user)
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
@@ -27,6 +30,7 @@ export default function Header() {
           </Typography>
           <Button component={NavLink} to={'/'} color="inherit">Home</Button>
           <Button component={NavLink} to={'/word'} color="inherit">Let's learn</Button>
+          {token ? name : <BasicModal/>}
         </Toolbar>
       </AppBar>
     </Box>
