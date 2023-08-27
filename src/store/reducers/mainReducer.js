@@ -3,7 +3,7 @@ import mainTypes from '../actions/actionTypes';
 const initialState = {
     words: [],
     shuffledWords: [],
-    user: {},
+    user: {}, //id, name, token
     lists: []
 }
 

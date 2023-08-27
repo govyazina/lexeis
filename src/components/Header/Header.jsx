@@ -8,10 +8,10 @@ import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import {NavLink} from "react-router-dom";
 import {BasicModal} from "../BasicModal/BasicModal";
-import {useSelector} from "react-redux";
+import {useRFromLocalStorage} from "../../hooks/useRFromLocalStorage";
 
 export default function Header() {
-  const {token, name} = useSelector(store => store.mainStore.user)
+  const {token, name} = useRFromLocalStorage()
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
