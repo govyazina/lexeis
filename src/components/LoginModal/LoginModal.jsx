@@ -3,7 +3,7 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Modal from '@mui/material/Modal';
 import {TextField} from "@mui/material";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {signIn} from "../../store/actions/mainActions";
 
 const style = {
@@ -18,9 +18,10 @@ const style = {
     p: 4,
 };
 
-export const BasicModal = () => {
+export const LoginModal = () => {
     const dispatch = useDispatch()
     const [open, setOpen] = React.useState(false);
+    const {loginError} = useSelector(store => store.mainStore.errors)
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
 
@@ -30,7 +31,6 @@ export const BasicModal = () => {
         const login = formData.get('login');
         const password = formData.get('password');
         dispatch(signIn(login, password))
-        setOpen(false)
     }
 
     return (
@@ -48,6 +48,7 @@ export const BasicModal = () => {
                         <br/>
                         <TextField id="pass" label="Password" name={'password'} variant="standard" type='password'/>
                         <br/>
+                        {loginError && <p>user not found</p>}
                         <Button variant="contained" type={'submit'}>Sign in</Button>
                     </form>
                 </Box>

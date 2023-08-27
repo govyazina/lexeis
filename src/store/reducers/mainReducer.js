@@ -4,7 +4,8 @@ const initialState = {
     words: [],
     shuffledWords: [],
     user: {}, //id, name, token
-    lists: []
+    lists: [],
+    errors: {},
 }
 
 function mainReducer(state = initialState, action = {}) {
@@ -25,6 +26,9 @@ function mainReducer(state = initialState, action = {}) {
         }
         case mainTypes.GET_LISTS: {
             return {...state, lists: action.payload}
+        }
+        case mainTypes.SIGN_IN_ERROR: {
+            return {...state, errors: {...state.errors, loginError: action.payload }}
         }
         default: {
             return state;

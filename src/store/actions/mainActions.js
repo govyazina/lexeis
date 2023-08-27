@@ -14,7 +14,7 @@ export const fetchWords = () => {
     return (dispatch) => {
         // const host = process.env.NODE_ENV === 'development' ? 'http://localhost:3002' : '';
         const host = 'https://lexeis.pchapl.dev'
-        fetch(host+'/api/words').then(response => response.json())
+        fetch(host + '/api/words').then(response => response.json())
             .then(result => dispatch(writeWordsAC(result)))
     }
 }
@@ -25,16 +25,27 @@ export const signIn = (login, pass) => {
             username: login,
             password: pass
         };
+        dispatch(signInErrAC(false))
         fetch('https://lexeis.pchapl.dev/api/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(data)
-        }).then(response => response.json())
-            .then(result => dispatch(signInAC(result)))
+        }).then(response => {
+            if (response.status === 200) {
+                return response.json()
+            }
+            dispatch(signInErrAC(true))
+            return {}
+        }).then(result => dispatch(signInAC(result)))
     }
 }
+
+export const signInErrAC = (error) => ({
+    type: mainTypes.SIGN_IN_ERROR,
+    payload: error
+})
 
 export const signInAC = (data) => ({
     type: mainTypes.SIGN_IN,

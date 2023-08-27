@@ -7,7 +7,7 @@ import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import {NavLink} from "react-router-dom";
-import {BasicModal} from "../BasicModal/BasicModal";
+import {LoginModal} from "../LoginModal/LoginModal";
 import {useRFromLocalStorage} from "../../hooks/useRFromLocalStorage";
 
 export default function Header() {
@@ -30,7 +30,7 @@ export default function Header() {
           </Typography>
           <Button component={NavLink} to={'/'} color="inherit">Home</Button>
           <Button component={NavLink} to={'/word'} color="inherit">Let's learn</Button>
-          {token ? name : <BasicModal/>}
+          {token ? name : <LoginModal/>}
         </Toolbar>
       </AppBar>
     </Box>
