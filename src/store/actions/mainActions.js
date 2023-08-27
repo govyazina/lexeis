@@ -12,7 +12,6 @@ export const shuffleWordsAC = () => ({
 
 export const fetchWords = () => {
     return (dispatch) => {
-        // const host = process.env.NODE_ENV === 'development' ? 'http://localhost:3002' : '';
         const host = 'https://lexeis.pchapl.dev'
         fetch(host + '/api/words').then(response => response.json())
             .then(result => dispatch(writeWordsAC(result)))
@@ -63,8 +62,26 @@ export const getLists = (token) => {
             .then(result => dispatch(getListsAC(result)))
     }
 }
-
 export const getListsAC = (data) => ({
     type: mainTypes.GET_LISTS,
     payload: data
 })
+
+export const getList = (token, id) => {
+    return (dispatch) => {
+        fetch(`https://lexeis.pchapl.dev/api/list?id=${id}`,
+            {
+                headers: {
+                    Authorization: token
+                }
+            }).then(response => response.json())
+            .then(result => dispatch(getListAC(result)))
+    }
+}
+
+export const getListAC = (data) => ({
+    type: mainTypes.GET_LIST,
+    payload: data
+})
+
+

@@ -29,6 +29,7 @@ export default function Header() {
             Λέχεις
           </Typography>
           <Button component={NavLink} to={'/'} color="inherit">Home</Button>
+          {token && <Button component={NavLink} to={'/lists'} color="inherit">Your lists</Button>}
           <Button component={NavLink} to={'/word'} color="inherit">Let's learn</Button>
           {token ? name : <LoginModal/>}
         </Toolbar>

@@ -6,6 +6,7 @@ const initialState = {
     user: {}, //id, name, token
     lists: [],
     errors: {},
+    currentList: []
 }
 
 function mainReducer(state = initialState, action = {}) {
@@ -29,6 +30,9 @@ function mainReducer(state = initialState, action = {}) {
         }
         case mainTypes.SIGN_IN_ERROR: {
             return {...state, errors: {...state.errors, loginError: action.payload }}
+        }
+        case mainTypes.GET_LIST: {
+            return {...state, currentList: action.payload}
         }
         default: {
             return state;

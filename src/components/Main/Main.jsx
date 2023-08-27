@@ -2,8 +2,9 @@ import React, {useEffect} from 'react';
 import {Route, Routes} from "react-router-dom";
 import {CardList} from "../CardList/CardList";
 import {useDispatch, useSelector} from "react-redux";
-import {fetchWords, getLists} from "../../store/actions/mainActions";
+import {fetchWords, getList, getLists} from "../../store/actions/mainActions";
 import RandomWordCard from "../RandomWordCard/RandomWordCard";
+import UserLists from "../UserLists/UserLists";
 
 function Main() {
     const {token} = useSelector(store => store.mainStore.user)
@@ -14,6 +15,8 @@ function Main() {
         <Routes>
             <Route path={'/'} element={<CardList/>}/>
             <Route path={'/word'} element={<RandomWordCard/>}/>
+            <Route path={'/lists'} element={<UserLists/>}/>
+            <Route path={'/list/:id'} element={<CardList/>}/>
         </Routes>
     );
 }
