@@ -13,7 +13,7 @@ function Main() {
     useEffect(() => token && dispatch(getLists(token)), [token])
     return (
         <Routes>
-            <Route path={'/'} element={<CardList/>}/>
+            <Route path={'/'} element={token ? <UserLists/> : <CardList/>}/>
             <Route path={'/word'} element={<RandomWordCard/>}/>
             <Route path={'/lists'} element={<UserLists/>}/>
             <Route path={'/list/:id'} element={<CardList/>}/>
