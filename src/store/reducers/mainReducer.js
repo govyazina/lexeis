@@ -6,7 +6,6 @@ const initialState = {
     user: {}, //id, name, token
     lists: [],
     errors: {},
-    currentList: []
 }
 
 function mainReducer(state = initialState, action = {}) {
@@ -32,7 +31,7 @@ function mainReducer(state = initialState, action = {}) {
             return {...state, errors: {...state.errors, loginError: action.payload }}
         }
         case mainTypes.GET_LIST: {
-            return {...state, currentList: action.payload}
+            return {...state, words: action.payload}
         }
         default: {
             return state;

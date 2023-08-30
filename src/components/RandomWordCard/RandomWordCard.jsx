@@ -20,7 +20,7 @@ function RandomWordCard() {
 
   return (
     <Container maxWidth="sm">
-      <WordCard key={index} front={shuffledWords[index].en} back={shuffledWords[index].el}/>
+      <WordCard key={index} front={shuffledWords[index].front} back={shuffledWords[index].back}/>
       <Box sx={{
         display: 'flex',
         justifyContent: 'center'
