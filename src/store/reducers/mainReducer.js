@@ -33,6 +33,9 @@ function mainReducer(state = initialState, action = {}) {
         case mainTypes.GET_LIST: {
             return {...state, words: action.payload}
         }
+        case mainTypes.LOGOUT: {
+            return {...state, user: {}}
+        }
         default: {
             return state;
         }

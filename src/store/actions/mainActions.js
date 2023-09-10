@@ -58,8 +58,16 @@ export const getLists = (token) => {
                 headers: {
                     Authorization: token
                 }
-            }).then(response => response.json())
+            }).then(response => {
+            if (response.status === 401) {
+                dispatch(logoutThunk())
+                throw new Error(response.statusText)
+            }
+            return response.json()
+        })
             .then(result => dispatch(getListsAC(result)))
+            .catch(error => console.log(error))
+
     }
 }
 export const getListsAC = (data) => ({
@@ -83,5 +91,15 @@ export const getListAC = (data) => ({
     type: mainTypes.GET_LIST,
     payload: data
 })
+
+export const logoutAC = () => ({
+    type: mainTypes.LOGOUT,
+    payload: null
+})
+
+export const logoutThunk = () => dispatch => {
+    window.localStorage.removeItem('lexis.user')
+    dispatch(logoutAC())
+}
 
 
